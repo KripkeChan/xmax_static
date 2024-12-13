@@ -3,59 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xmas Gift Exchange</title>
+    <title>Your Gift Assignment</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>🎁 Enter Your Unique Code 🎁</h1>
-        <img id="randomImage" src="" alt="Random Christmas Image" style="display:none;" />
-        <form id="codeForm">
-            <input type="text" id="uniqueCode" placeholder="Enter Code" required>
-            <button type="submit">Submit</button>
-        </form>
-        <button class="admin-button" onclick="window.location.href='/admin'">Go to Admin Page</button>
+        <h1>🎁 You need to give a gift to: 🎁</h1>
+        <p id="giftReceiver">Loading...</p>
+        <img id="receiverPhoto" src="" alt="Receiver's Photo" style="display:none;">
     </div>
     <script>
-        // Array of image URLs
-        const images = [
-            'images/image1.jpg',
-            'images/image2.jpg',
-            'images/image3.jpg',
-            'images/image4.jpg'
-        ];
+        // Gift assignments data with images
+        const giftAssignments = {
+            'chris123': { name: 'Pacco', photo: 'images/pacco.jpg' },
+            'pacco123': { name: 'May', photo: 'images/may.jpg' },
+            'may123': { name: 'Justin', photo: 'images/justin.jpg' },
+            'justin123': { name: 'Chris', photo: 'images/chris.jpg' }
+        };
 
-        // Function to select a random image
-        function showRandomImage() {
-            const randomIndex = Math.floor(Math.random() * images.length);
-            const randomImage = images[randomIndex];
-            const imageElement = document.getElementById('randomImage');
-            imageElement.src = randomImage;
-            imageElement.style.display = 'block'; // Show the image
+        // Function to get URL parameters
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
         }
 
-        // Call the function to display a random image
-        showRandomImage();
+        // Get the code from the URL
+        const code = getQueryParam('code');
+        const receiverInfo = giftAssignments[code];
 
-        // Gift assignments data
-        const giftAssignments = {
-            'chris123': 'Pacco',
-            'pacco123': 'May',
-            'may123': 'Justin',
-            'justin123': 'Chris'
-        };
-
-        document.getElementById('codeForm').onsubmit = function(event) {
-            event.preventDefault();
-            const code = document.getElementById('uniqueCode').value.toLowerCase();
-            const receiver = giftAssignments[code];
-
-            if (receiver) {
-                window.location.href = `gift.html?code=${code}`;
-            } else {
-                alert('Code not found. Please try again.');
-            }
-        };
+        if (receiverInfo) {
+            document.getElementById('giftReceiver').textContent = receiverInfo.name;
+            const photoElement = document.getElementById('receiverPhoto');
+            photoElement.src = receiverInfo.photo; // Set the photo source
+            photoElement.style.display = 'block'; // Show the photo
+        } else {
+            document.getElementById('giftReceiver').textContent = 'Code not found.';
+        }
     </script>
 </body>
 </html>
