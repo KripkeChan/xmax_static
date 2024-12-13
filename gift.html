@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Gift Assignment</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>🎄 You need to give a gift to: 🎄</h1>
+    <p id="giftReceiver">Loading...</p>
+    <script>
+        // Gift assignments data
+        const giftAssignments = {
+            'chris123': 'Pacco',
+            'pacco123': 'May',
+            'may123': 'Justin',
+            'justin123': 'Chris'
+        };
+
+        // Function to get URL parameters
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Get the code from the URL
+        const code = getQueryParam('code');
+        const receiver = giftAssignments[code];
+
+        if (receiver) {
+            document.getElementById('giftReceiver').textContent = receiver;
+        } else {
+            document.getElementById('giftReceiver').textContent = 'Code not found.';
+        }
+    </script>
+</body>
+</html>
