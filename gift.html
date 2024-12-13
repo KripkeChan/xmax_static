@@ -7,8 +7,11 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>🎄 You need to give a gift to: 🎄</h1>
-    <p id="giftReceiver">Loading...</p>
+    <div class="container">
+        <h1>🎄 You need to give a gift to: 🎄</h1>
+        <p id="giftReceiver">Loading...</p>
+        <img id="receiverPhoto" src="" alt="Receiver's Photo" style="display:none;">
+    </div>
     <script>
         // Gift assignments data
         const giftAssignments = {
@@ -30,6 +33,7 @@
 
         if (receiver) {
             document.getElementById('giftReceiver').textContent = receiver;
+            // You can add a receiver photo here if needed
         } else {
             document.getElementById('giftReceiver').textContent = 'Code not found.';
         }

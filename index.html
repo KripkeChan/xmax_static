@@ -7,12 +7,15 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>🎁 Enter Your Unique Code 🎁</h1>
-    <img id="randomImage" src="" alt="Random Christmas Image" style="display:none;" />
-    <form id="codeForm">
-        <input type="text" id="uniqueCode" placeholder="Enter Code" required>
-        <button type="submit">Submit</button>
-    </form>
+    <div class="container">
+        <h1>🎁 Enter Your Unique Code 🎁</h1>
+        <img id="randomImage" src="" alt="Random Christmas Image" style="display:none;" />
+        <form id="codeForm">
+            <input type="text" id="uniqueCode" placeholder="Enter Code" required>
+            <button type="submit">Submit</button>
+        </form>
+        <button class="admin-button" onclick="window.location.href='/admin'">Go to Admin Page</button>
+    </div>
     <script>
         // Array of image URLs
         const images = [
