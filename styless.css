@@ -36,4 +36,7 @@ img {
     height: 150px; /* Ensure the image is square */
     margin-top: 20px;
     border-radius: 10px; /* Optional: add rounded corners */
+    display: block; /* Ensures the image is treated as a block element */
+    margin-left: auto; /* Centering the image */
+    margin-right: auto; /* Centering the image */
 }
